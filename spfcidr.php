@@ -22,7 +22,7 @@ foreach ($whitelist as $mxdomain) {
  *
  * @param string $domain  Domain to add to whitelist
  * @param array  $exclude Array of domains to exclude from whitelist
- * @param array  $unique  Array of cidrs already retrieved
+ * @param array  &$unique Array of cidrs already retrieved
  *
  * @return void
  */
