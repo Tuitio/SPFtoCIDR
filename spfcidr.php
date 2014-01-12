@@ -1,5 +1,13 @@
 #!/usr/bin/php
 <?php
+/**
+ * Copy to /usr/local/bin/ or wherever and set up the list in main.cf:
+ * postscreen_access_list = permit_mynetworks,
+ *        cidr:/etc/postfix/postscreen_dynamic_access.cidr
+ *
+ * Usage: spfcidr.php > /etc/postfix/postscreen_access_dynamic.cidr
+ * Remember to reload postfix as part of the routine.
+ */
 
 $whitelist = array(
     'google.com',
@@ -7,9 +15,14 @@ $whitelist = array(
     'amazon.co.uk'
 );
 
+/**
+ * Some spf includes may not be needed. Add them to this array.
+ */
 $exclude = array(
     'salesforce.com'
 );
+
+
 
 foreach ($whitelist as $mxdomain) {
     getIpAddresses($mxdomain, $exclude);
